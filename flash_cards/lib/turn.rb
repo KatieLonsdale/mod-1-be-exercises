@@ -5,5 +5,8 @@ class Turn
     @guess = guess
     @card = card
   end
-  
+
+  def correct?
+    self.guess == card.answer ? true : false
+  end
 end
