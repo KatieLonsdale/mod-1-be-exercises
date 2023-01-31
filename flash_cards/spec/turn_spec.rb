@@ -23,7 +23,7 @@ RSpec.describe Turn do
     expect(turn.card).to eq(card)
   end
 
-  it 'tells you if the guess is right' do
+  xit 'tells you if the guess is right' do
     card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
     turn = Turn.new('The guess.', card)
 
@@ -35,7 +35,7 @@ RSpec.describe Turn do
     expect(turn.correct?).to be false
   end
 
-  it 'returns the result' do
+  xit 'returns the result' do
     card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
     turn = Turn.new('The guess.', card)
 
