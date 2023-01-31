@@ -9,4 +9,8 @@ class Turn
   def correct?
     self.guess == card.answer ? true : false
   end
+
+  def feedback
+    self.guess == card.answer ? "Correct!" : "Incorrect."
+  end
 end
