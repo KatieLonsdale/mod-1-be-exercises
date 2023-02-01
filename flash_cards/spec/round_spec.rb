@@ -27,7 +27,7 @@ RSpec.describe do
     expect(round.turns).to eq []
   end
 
-  xit 'tracks current card' do
+  it 'tracks current card' do
     card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
     card_2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
     card_3 = Card.new("Describe in words the exact direction that is 697.5° clockwise from due north?", "North north west", :STEM)
@@ -57,7 +57,7 @@ RSpec.describe do
     expect(new_turn.class).to eq Turn
   end
 
-  xit 'evaluates answer' do
+  it 'evaluates answer' do
     card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
     card_2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
     card_3 = Card.new("Describe in words the exact direction that is 697.5° clockwise from due north?", "North north west", :STEM)
@@ -69,7 +69,7 @@ RSpec.describe do
     expect(new_turn.correct?).to be true
   end
 
-  xit 'keeps track of turns' do
+  it 'keeps track of turns' do
     card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
     card_2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
     card_3 = Card.new("Describe in words the exact direction that is 697.5° clockwise from due north?", "North north west", :STEM)
@@ -78,12 +78,12 @@ RSpec.describe do
 
     new_turn = round.take_turn('Juneau')
 
-    expect(round.turns).to eq [card_1]
+    expect(round.turns).to eq [new_turn]
     expect(round.turns.count).to eq 1
 
     new_turn_2 = round.take_turn('Venus')
 
-    expect(round.turns).to eq [card_2]
+    expect(round.turns).to eq [new_turn, new_turn_2]
     expect(round.turns.count).to eq 2
   end
 
