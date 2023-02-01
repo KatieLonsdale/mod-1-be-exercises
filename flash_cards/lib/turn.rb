@@ -11,6 +11,6 @@ class Turn
   end
 
   def feedback
-    self.guess == card.answer ? "Correct!" : "Incorrect."
+    self.guess == card.answer ? "Correct." : "Incorrect."
   end
 end
