@@ -6,4 +6,12 @@ class Round
     @turns = []
   end
 
+  def current_card
+    deck.cards[@turns.count]
+  end
+
+  def take_turn(guess)
+    Turn.new(guess, self.current_card)
+  end
+
 end
