@@ -47,3 +47,6 @@ puts turn_4.feedback
 
 puts '****** Game over! ******'
 puts "You had #{round_1.number_correct} correct guesses out of #{round_1.turns.count} for a total score of #{round_1.percent_correct}%."
+puts "Geography - #{round_1.percent_correct_by_category(:Geography)}% correct"
+puts "Math - #{round_1.percent_correct_by_category(:Math)}% correct"
+puts "Biology - #{round_1.percent_correct_by_category(:Biology)}% correct"
