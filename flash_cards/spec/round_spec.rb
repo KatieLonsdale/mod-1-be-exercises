@@ -1,3 +1,4 @@
+require 'rspec'
 require './lib/card'
 require './lib/deck'
 require './lib/round'
@@ -87,7 +88,7 @@ RSpec.describe do
     expect(round.turns.count).to eq 2
   end
 
-  xit 'keeps track of correct answers' do
+  it 'keeps track of correct answers' do
     card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
     card_2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
     card_3 = Card.new("Describe in words the exact direction that is 697.5° clockwise from due north?", "North north west", :STEM)
@@ -106,7 +107,7 @@ RSpec.describe do
     expect(round.percent_correct).to eq 50.0
   end
 
-  xit 'keeps track of correct answers by category' do
+  it 'keeps track of correct answers by category' do
     card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
     card_2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
     card_3 = Card.new("Describe in words the exact direction that is 697.5° clockwise from due north?", "North north west", :STEM)
