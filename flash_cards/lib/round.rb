@@ -22,4 +22,32 @@ class Round
     (@number_correct.to_f) / (@turns.count.to_f) * 100
   end
 
+  def number_correct_by_category(category)
+    number_right = 0
+    @turns.each do |turn|
+      if turn.correct? == true && turn.card.category == category
+      number_right += 1
+      else
+      end
+    end
+    number_right
+  end
+
+  def percent_correct_by_category(category)
+    number_right = 0
+    total_number = 0
+    @turns.each do |turn|
+      if turn.correct? == true && turn.card.category == category
+      number_right += 1
+      else
+      end
+    end
+    @turns.each do |turn|
+      if turn.card.category == category
+        total_number += 1
+      else 
+      end
+    end
+    (number_right.to_f) / (total_number.to_f) * 100
+  end
 end
