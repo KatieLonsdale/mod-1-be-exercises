@@ -12,9 +12,11 @@ class Venue
   end
 
   def yell_at_patrons
-    @patrons.each do |patron|
-      patron.upcase!
+    # upcase_patrons = []
+    @patrons.map do |patron|
+      # upcase_patrons.push(patron.upcase)
+      patron.upcase
     end
-    # how can this be done without mutating original array?
+    # upcase_patrons
   end
 end
