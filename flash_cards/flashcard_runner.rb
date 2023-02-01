@@ -29,3 +29,9 @@ guess_2 = gets.chomp
 turn_2 = Turn.new(guess_2,card_2)
 puts turn_2.feedback
 
+puts "This is card number 3 out of 4."
+puts "Question: #{card_3.question}"
+guess_3 = gets.chomp
+turn_3 = Turn.new(guess_3,card_3)
+puts turn_3.feedback
+
