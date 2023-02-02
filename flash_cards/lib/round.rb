@@ -17,7 +17,7 @@ class Round
   end
 
   def turn_number
-    @turns.count
+    @turns.count + 1
   end
 
   def number_correct
