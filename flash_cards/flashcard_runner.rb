@@ -15,32 +15,32 @@ def start
 
   round_1 = Round.new(deck_1)
 
-  puts "Welcome! You're playing with 4 cards."
+  puts "Welcome! You're playing with #{cards.count} cards."
   puts '-------------------------------------------------'
 
-  puts "This is card number 1 out of 4."
-  puts "Question: #{card_1.question}"
+  puts "This is card number #{round_1.turn_number} out of #{cards.count}."
+  puts "Question: #{round_1.current_card.question}"
   guess_1 = gets.chomp
   turn_1 = Turn.new(guess_1,card_1)
   round_1.take_turn(guess_1)
   puts turn_1.feedback
 
-  puts "This is card number 2 out of 4."
-  puts "Question: #{card_2.question}"
+  puts "This is card number #{round_1.turn_number} out of #{cards.count}."
+  puts "Question: #{round_1.current_card.question}"
   guess_2 = gets.chomp
   turn_2 = Turn.new(guess_2,card_2)
   round_1.take_turn(guess_2)
   puts turn_2.feedback
 
-  puts "This is card number 3 out of 4."
-  puts "Question: #{card_3.question}"
+  puts "This is card number #{round_1.turn_number} out of #{cards.count}."
+  puts "Question: #{round_1.current_card.question}"
   guess_3 = gets.chomp
   turn_3 = Turn.new(guess_3,card_3)
   round_1.take_turn(guess_3)
   puts turn_3.feedback
 
-  puts "This is card number 4 out of 4."
-  puts "Question: #{card_4.question}"
+  puts "This is card number #{round_1.turn_number} out of #{cards.count}."
+  puts "Question: #{round_1.current_card.question}"
   guess_4 = gets.chomp
   turn_4 = Turn.new(guess_4,card_4)
   round_1.take_turn(guess_4)
