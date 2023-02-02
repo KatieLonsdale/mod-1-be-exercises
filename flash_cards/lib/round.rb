@@ -16,6 +16,10 @@ class Round
     current_turn
   end
 
+  def turn_number
+    @turns.count
+  end
+
   def number_correct
     number_right = 0
     @turns.each do |turn|
