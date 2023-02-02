@@ -25,6 +25,7 @@ RSpec.describe Deck do
     deck = Deck.new(test_cards)
 
     expect(deck.cards).to be(test_cards)
+    expect(deck.cards).to be_an(Array)
   end
 
   it 'returns number of cards in deck' do
