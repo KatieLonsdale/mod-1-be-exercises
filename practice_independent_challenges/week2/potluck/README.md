@@ -62,7 +62,7 @@ pry(main)> potluck.dishes
 pry(main)> couscous_salad = Dish.new("Couscous Salad", :appetizer)
 #=> #<Dish:0x00007fccc4249940...>
 
-pry(main)> cocktail_meatballs = Dish.new("Cocktail Meatballs", :entre)
+pry(main)> cocktail_meatballs = Dish.new("Cocktail Meatballs", :entree)
 #=> #<Dish:0x00007fccc499ceb8...>
 
 pry(main)> potluck.add_dish(couscous_salad)
