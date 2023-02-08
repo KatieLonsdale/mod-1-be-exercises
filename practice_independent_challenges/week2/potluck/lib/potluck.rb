@@ -16,4 +16,10 @@ class Potluck
     end
   end
 
+  def menu
+
+  end
+
+  # add some changes
+
 end
