@@ -82,7 +82,7 @@ describe Painter do
     expect(painter.get_paints).to eq([paint_1, paint_2])
   end
 
-  xit 'test_it_can_get_paint_names' do
+  it 'test_it_can_get_paint_names' do
     painter = Painter.new("Bob Ross")
     paint_1 = Paint.new("Alizarin Crimson")
     paint_2 = Paint.new("Van Dyke Brown")
