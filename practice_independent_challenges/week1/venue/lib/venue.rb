@@ -12,11 +12,19 @@ class Venue
   end
 
   def yell_at_patrons
-    # upcase_patrons = []
     @patrons.map do |patron|
-      # upcase_patrons.push(patron.upcase)
       patron.upcase
     end
-    # upcase_patrons
   end
+
+  def over_capacity?
+    @patrons.count > @capacity ? true: false
+  end
+
+  def kick_out
+    until @patrons.count == @capacity
+      @patrons.pop 
+    end
+  end
+  
 end
