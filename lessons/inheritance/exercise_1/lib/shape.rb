@@ -1,11 +1,16 @@
 class Shape
 
-  # This class should be a parent that creates the following properties:
-  # - color
-  # - width
-  # - length
-  # It should also have the following behaviors:
-  # - area (width * length)
-  # - perimeter (2 * (length + width))
+  def initialize(color, width, length)
+    @color = color
+    @length = length
+    @width
+  end
 
+  def area
+    @width * @length
+  end
+
+  def perimeter
+    2 * (@length + @width)
+  end
 end
