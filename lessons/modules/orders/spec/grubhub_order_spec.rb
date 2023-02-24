@@ -14,7 +14,7 @@ RSpec.describe GrubhubOrder do
   end
 
   it 'can return a delivery message' do
-    expect(@order.delivery).to eq("Your food will arrive in 45-60 minutes.")
+    expect(@order.delivery('food', '45-60 minutes')).to eq("Your food will arrive in 45-60 minutes.")
   end
 
   it 'can return a review request' do

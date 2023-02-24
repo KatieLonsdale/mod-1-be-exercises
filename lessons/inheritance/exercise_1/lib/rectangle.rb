@@ -1,4 +1,6 @@
-class Rectangle
+require './lib/shape'
+
+class Rectangle < Shape
 
   attr_reader :color,
               :length,
@@ -8,13 +10,5 @@ class Rectangle
     @color = color
     @length = length
     @width = width
-  end
-
-  def area
-    @width * @length
-  end
-
-  def perimeter
-    2 * (@length + @width)
   end
 end

@@ -1,14 +1,17 @@
 # ./grubhub_order.rb
+require './lib/online_order'
 class GrubhubOrder
-  def confirmation(thing)
-    "You got #{thing}."
-  end
+  include OnlineOrder
 
-  def delivery
-    "Your food will arrive in 45-60 minutes."
-  end
+  # attr_reader :type
+                # :time
 
-  def review
-    "Please rate your order within 30 days."
-  end
+  # def initialize
+  #   @type = 'food'
+  #   @time = '45-60 minutes'
+  # end
+
+  # def delivery
+  #   "Your food will arrive in 45-60 minutes."
+  # end
 end

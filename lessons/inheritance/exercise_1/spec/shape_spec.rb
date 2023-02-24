@@ -4,6 +4,7 @@ require "./lib/shape"
 RSpec.describe Shape do
   it "exists" do
     s = Shape.new("red", 2, 4)
+    expect(s.is_a? Shape).to be true
   end
 
   it "has color, length, and width attributes" do
@@ -21,5 +22,10 @@ RSpec.describe Shape do
   it "can calculate perimeter" do
     s = Shape.new("red", 2, 4)
     expect(s.perimeter).to eq(12)
+  end
+
+  it 'tells us if it is black and white or not' do
+    s = Shape.new("red", 2, 4)
+    expect(s.black_and_white?).to be false
   end
 end

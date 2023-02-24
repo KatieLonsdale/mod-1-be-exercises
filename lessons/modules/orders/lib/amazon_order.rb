@@ -1,14 +1,19 @@
 # ./amazon_order.rb
+require './lib/online_order'
 class AmazonOrder
-  def confirmation(thing)
-    "You got #{thing}."
-  end
+  include OnlineOrder
 
-  def delivery
-    "Your order will arrive in 2 business days."
-  end
+  # attr_reader :type,
+  #             :time
 
-  def review
-    "Please rate your order within 30 days."
-  end
+  # def initialize
+  #   @type = 'order'
+  #   @time = '2 business days'
+  # end
+
+  # ^^^ could add this to module since we have it in both classes
+
+  # def delivery
+  #   "Your order will arrive in 2 business days."
+  # end
 end

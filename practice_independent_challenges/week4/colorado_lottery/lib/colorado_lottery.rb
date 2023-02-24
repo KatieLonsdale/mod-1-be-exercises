@@ -32,4 +32,9 @@ class ColoradoLottery
       contestant if contestant.spending_money >= game.cost
     end
   end
+
+  def charge_contestants(game)
+    require 'pry'; binding.pry
+    eligible_contestants(game).each{|contestant| contestant.spending_money -= game.cost}
+  end
 end

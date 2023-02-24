@@ -142,4 +142,40 @@ RSpec.describe do
       expect(@lottery.eligible_contestants(@mega_millions)).to eq([@alexander, @frederick, @winston, grace])
     end
   end
+
+  describe '#charge_contestants' do
+    it 'charges contestants cost of game' do
+      @lottery.register_contestant(@alexander, @pick_4)
+      @lottery.register_contestant(@alexander, @mega_millions)
+      @lottery.register_contestant(@frederick, @mega_millions)
+      @lottery.register_contestant(@winston, @cash_5)
+      @lottery.register_contestant(@winston, @mega_millions)
+      grace = Contestant.new({
+                     first_name: 'Grace',
+                     last_name: 'Hopper',
+                     age: 20,
+                     state_of_residence: 'CO',
+                     spending_money: 20})
+
+      grace.add_game_interest('Mega Millions')
+      grace.add_game_interest('Cash 5')
+      grace.add_game_interest('Pick 4')
+      @lottery.register_contestant(grace, @mega_millions)
+      @lottery.register_contestant(grace, @cash_5)
+      @lottery.register_contestant(grace, @pick_4)
+      
+      @lottery.charge_contestants(@cash_5)
+
+
+      expect(grace.spending_money).to eq 19
+      expect(@winston.spending_money).to eq 4
+
+      @lottery.charge_contestants(@mega_millions)
+
+      expect(grace.spending_money).to eq 14
+      expect(@winston.spending_money).to eq 4
+      expect(@alexander.spending_money).to eq 5
+      expect(@frederick.spending_money).to eq 15
+    end
+  end
 end

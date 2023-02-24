@@ -1,5 +1,6 @@
 class Contestant
-  attr_reader :full_name, :age, :state_of_residence, :spending_money, :game_interests
+  attr_reader :full_name, :age, :state_of_residence, :game_interests
+  attr_accessor :spending_money
 
   def initialize(info)
     @full_name = "#{info[:first_name]} #{info[:last_name]}"
