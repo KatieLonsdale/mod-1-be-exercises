@@ -17,4 +17,9 @@ class Curator
   def find_artist_by_id(id)
     @artists.find{|artist| artist.id == id}
   end
+
+  def collection
+    collection = @photographs.group_by{|photo| photo.artist_id}
+    collection.transform_keys{|id| find_artist_by_id(id)}
+  end
 end
