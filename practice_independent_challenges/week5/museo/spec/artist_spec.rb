@@ -33,7 +33,7 @@ RSpec.describe Artist do
   end
 
   describe '#age_at_death' do
-    xit 'returns age at death' do
+    it 'returns age at death' do
       expect(@artist.age_at_death).to eq 82
       expect(@artist.age_at_death).to be_a Integer
     end

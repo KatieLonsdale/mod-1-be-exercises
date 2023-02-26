@@ -1,3 +1,5 @@
+require 'csv'
+
 class Curator
   attr_reader :photographs, :artists
 
@@ -32,5 +34,21 @@ class Curator
       photos if artist.country == country
     end
     photos_array.empty? ? 'No artist found.' : photos_array.values.flatten
+  end
+
+  def add_photo_collection(file)
+    photos = CSV.open file, headers: true, header_converters: :symbol
+    photos.each do |photo|
+      @photographs << Photograph.new({id: photo[:id], 
+                      name: photo[:name], 
+                      artist_id: photo[:artist_id], 
+                      year: photo[:year]})
+    end
+  end
+
+  def photos_from_time_period(start, finish)
+    @photographs.find_all do |photo|
+      photo.year > start && photo.year < finish
+    end
   end
 end

@@ -120,4 +120,40 @@ RSpec.describe Curator do
       expect(@curator.photos_by_country('Spain')).to eq('No artist found.')
     end
   end
+
+  describe '#add_photo_collection' do
+    it 'adds photos from CSV file' do
+      file = './data/photographs.csv'
+      @curator.add_photo_collection(file)
+
+      expect(@curator.photographs.empty?).to be false
+      expect(@curator.photographs.sample).to be_a Photograph
+      expect(@curator.photographs.sample.id).to_not be false
+      expect(@curator.photographs.sample.name).to_not be false
+      expect(@curator.photographs.sample.artist_id).to_not be false
+      expect(@curator.photographs.sample.year).to_not be false
+    end
+
+    it 'does not overwrite existing photos' do
+      @curator.add_photograph(@photo_3)
+
+      expect(@curator.photographs).to eq([@photo_3])
+
+      file = './data/photographs.csv'
+      @curator.add_photo_collection(file)
+
+      expect(@curator.photographs.include?(@photo_3)).to be true
+    end
+  end
+
+  describe '#photos_from_time_period' do
+    it 'returns list of photos from year within given range' do
+      @curator.add_photograph(@photo_1)
+      @curator.add_photograph(@photo_2)
+      @curator.add_photograph(@photo_3)
+
+      expect(@curator.photos_from_time_period('1940', '1960')).
+      to eq([@photo_1, @photo_2])
+    end
+  end
 end
