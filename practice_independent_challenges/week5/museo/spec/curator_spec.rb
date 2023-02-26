@@ -115,8 +115,8 @@ RSpec.describe Curator do
       @curator.add_artist(@artist_1)
       @curator.add_artist(@artist_2)
 
-      expect(@curator.photos_by_country('United States')).to eq([@artist_2])
-      expect(@curator.photos_by_country('France')).to eq([@artist_1])
+      expect(@curator.photos_by_country('United States')).to eq([@photo_2, @photo_3])
+      expect(@curator.photos_by_country('France')).to eq([@photo_1])
       expect(@curator.photos_by_country('Spain')).to eq('No artist found.')
     end
   end
