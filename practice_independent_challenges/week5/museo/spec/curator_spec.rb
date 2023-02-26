@@ -30,6 +30,7 @@ RSpec.describe Curator do
     country: "United States"      
     })        
   end
+
   describe '#initialize' do
     it 'exists' do
       expect(@curator).to be_a Curator
@@ -44,6 +45,7 @@ RSpec.describe Curator do
 
     end
   end
+
   describe '#add_photograph' do
     it 'adds given photo to photographs array' do
       @curator.add_photograph(@photo_1)
@@ -55,13 +57,21 @@ RSpec.describe Curator do
   end
 
   describe '#add_artist' do
-    it 'adds an artist to artists array' do
+    it 'adds given artist to artists array' do
       @curator.add_artist(@artist_1)
       @curator.add_artist(@artist_2)
 
       expect(@curator.artists).to eq([@artist_1, @artist_2])
       expect(@curator.artists.count).to eq 2
+    end
+  end
 
+  describe '#find_artist_by_id' do
+    it 'finds added artist by their id' do
+      @curator.add_artist(@artist_1)
+      @curator.add_artist(@artist_2)
+
+      expect(@curator.find_artist_by_id('1')).to eq(@artist_1)
     end
   end
 end
