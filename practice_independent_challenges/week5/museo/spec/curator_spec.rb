@@ -15,6 +15,12 @@ RSpec.describe Curator do
      artist_id: "2",      
      year: "1941"      
     })
+    @photo_3 = Photograph.new({
+      id: "3",      
+      name: "Big Rock Candy Mountain",      
+      artist_id: "2",      
+      year: "1967"      
+     })
     @artist_1 = Artist.new({
     id: "1",      
     name: "Henri Cartier-Bresson",      
@@ -79,11 +85,39 @@ RSpec.describe Curator do
     it 'returns list of all artists and their photographs' do
       @curator.add_photograph(@photo_1)
       @curator.add_photograph(@photo_2)
+      @curator.add_photograph(@photo_3)
       @curator.add_artist(@artist_1)
       @curator.add_artist(@artist_2)
 
       expect(@curator.collection).to be_a Hash
-      expect(@curator.collection).to eq({@artist_1 => [@photo_1], @artist_2 => [@photo_2]})
+      expect(@curator.collection).to eq({@artist_1 => [@photo_1], @artist_2 => [@photo_2,@photo_3]})
+    end
+  end
+
+  describe '#artists_with_multiple_photographs' do
+    it 'returns list of artists with more than one photo' do
+      @curator.add_photograph(@photo_1)
+      @curator.add_photograph(@photo_2)
+      @curator.add_photograph(@photo_3)
+      @curator.add_artist(@artist_1)
+      @curator.add_artist(@artist_2)
+
+      expect(@curator.artists_with_multiple_photographs).to be_a Array
+      expect(@curator.artists_with_multiple_photographs).to eq([@artist_2])
+    end 
+  end
+
+  describe '#photos_by_country' do
+    it 'returns list of photos that were taken by artist from given country' do
+      @curator.add_photograph(@photo_1)
+      @curator.add_photograph(@photo_2)
+      @curator.add_photograph(@photo_3)
+      @curator.add_artist(@artist_1)
+      @curator.add_artist(@artist_2)
+
+      expect(@curator.photos_by_country('United States')).to eq([@artist_2])
+      expect(@curator.photos_by_country('France')).to eq([@artist_1])
+      expect(@curator.photos_by_country('Spain')).to eq('No artist found.')
     end
   end
 end
