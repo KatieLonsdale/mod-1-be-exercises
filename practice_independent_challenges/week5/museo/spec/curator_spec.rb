@@ -21,6 +21,18 @@ RSpec.describe Curator do
       artist_id: "2",      
       year: "1967"      
      })
+    @photo_4 = Photograph.new({
+      id: "4",      
+      name: "Le Fromage",      
+      artist_id: "1",      
+      year: "1954"      
+     })
+    @photo_5 = Photograph.new({
+      id: "5",      
+      name: "Rue Mouffetard, Paris (Boy with Bottles)",      
+      artist_id: "1",      
+      year: "1962"      
+     })
     @artist_1 = Artist.new({
     id: "1",      
     name: "Henri Cartier-Bresson",      
@@ -154,6 +166,30 @@ RSpec.describe Curator do
 
       expect(@curator.photos_from_time_period('1940', '1960')).
       to eq([@photo_1, @photo_2])
+    end
+  end
+
+  describe '#artist_at_age' do
+    it 'returns age at time of given photo and photos taken at that age' do
+      @curator.add_photograph(@photo_1)
+      @curator.add_photograph(@photo_2)
+      @curator.add_photograph(@photo_3)
+      @curator.add_photograph(@photo_4)
+      @curator.add_photograph(@photo_5)
+      @curator.add_artist(@artist_1)
+
+      expected_results = ({'46' => [@photo_1, @photo_4]})
+
+      expect(@curator.artist_at_age(@photo_1)).to eq(expected_results)
+    end
+  end
+
+  describe '#artist_age_when_photo_taken' do
+    it 'returns artist age when photo was taken' do
+      @curator.add_photograph(@photo_1)
+      @curator.add_artist(@artist_1)
+
+      expect(@curator.artist_age_when_photo_taken(@photo_1)).to eq '46'
     end
   end
 end

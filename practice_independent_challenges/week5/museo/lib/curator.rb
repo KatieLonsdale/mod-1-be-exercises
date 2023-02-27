@@ -51,4 +51,15 @@ class Curator
       photo.year > start && photo.year < finish
     end
   end
+
+  def artist_at_age(photo)
+    age = artist_age_when_photo_taken(photo)
+    photos = @photographs.find_all{|pic| pic.artist_id == photo.artist_id}
+    {age => photos.find_all{|pic| pic.year == photo.year}}
+  end
+
+  def artist_age_when_photo_taken(photo)
+    artist = find_artist_by_id(photo.id)
+      (photo.year.to_i - artist.born.to_i).to_s
+  end
 end
