@@ -47,11 +47,17 @@ RSpec.describe Bob do
 
     it 'can calculate total paint amount' do
       bob = Bob.new
-      paint_1 = Paint.new("Alizarin Crimson", 42)
-      paint_2 = Paint.new("Van Dyke Brown", 25)
+      # paint_1 = Paint.new("Alizarin Crimson", 42)
+      # paint_2 = Paint.new("Van Dyke Brown", 25)
+
+      paint_1 = double("paint 1")
+      paint_2 = double()
 
       bob.add_paint(paint_1)
       bob.add_paint(paint_2)
+
+      allow(paint_1).to receive(:amount).and_return(32)
+      allow(paint_2).to receive(:amount).and_return(35)
 
       expect(bob.total_paint_amount).to eq(67)
     end
