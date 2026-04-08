@@ -8,7 +8,6 @@ class Appointments
   end
 
   def earliest
-    sorted_schedule = @schedule.sort
-    sorted_schedule.first
+    @schedule.sort.first
   end
 end
