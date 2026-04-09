@@ -19,4 +19,8 @@ class Venue
   def over_capacity?
     @patrons.count > @capacity
   end
+
+  def kick_out(patron = nil)
+    patron == nil ? @patrons.pop : @patrons.delete(patron)
+  end
 end
