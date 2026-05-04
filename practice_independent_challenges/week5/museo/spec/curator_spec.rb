@@ -239,7 +239,87 @@ RSpec.describe 'Curator' do
         expect(result).to eq(["Henri Cartier-Bresson", "Diane Arbus"])
       end
     end
+
+    describe '#photographs_from_country' do
+      it 'returns photographs from artists from a given country' do
+        artist_1 = Artist.new({
+          id: "1",
+          name: "Henri Cartier-Bresson",
+          born: "1908",
+          died: "2004",
+          country: "France"
+        })
+
+        artist_2 = Artist.new({
+          id: "2",
+          name: "Ansel Adams",
+          born: "1902",
+          died: "1984",
+          country: "United States"
+        })
+
+        artist_3 = Artist.new({
+          id: "3",
+          name: "Diane Arbus",
+          born: "1923",
+          died: "1971",
+          country: "United States"
+        })
+
+        photograph_1 = Photograph.new({
+          id: "1",
+          name: "Rue Mouffetard, Paris (Boy with Bottles)",
+          artist_id: "1",
+          year: "1954"
+        })
+
+        photograph_2 = Photograph.new({
+          id: "2",
+          name: "Moonrise, Hernandez",
+          artist_id: "2",
+          year: "1941"
+        })
+
+        photograph_3 = Photograph.new({
+          id: "3",
+          name: "Behind the Gare Saint-Lazare",
+          artist_id: "1",
+          year: "1932"
+        })
+
+        photograph_4 = Photograph.new({
+          id: "4",
+          name: "Child with Toy Hand Grenade",
+          artist_id: "3",
+          year: "1962"
+        })
+
+        photograph_5 = Photograph.new({
+          id: "5",
+          name: "Identical Twins",
+          artist_id: "3",
+          year: "1967"
+        })
+
+        curator = Curator.new
+        curator.add_artist(artist_1)
+        curator.add_artist(artist_2)
+        curator.add_artist(artist_3)
+        curator.add_photograph(photograph_1)
+        curator.add_photograph(photograph_2)
+        curator.add_photograph(photograph_3)
+        curator.add_photograph(photograph_4)
+        curator.add_photograph(photograph_5)
+
+        result = curator.photographs_from_country("United States")
+
+        expect(result).to be_a(Array)
+        expect(result).to eq([photograph_2, photograph_4, photograph_5])
+        expect(curator.photographs_from_country("Spain")).to eq([])
+      end
+    end
+
+    
   end
 end
-
 

@@ -27,8 +27,11 @@ class Curator
   def prolific_artist_names
     artists_with_photographs.select { |artist, photos| photos.length > 1 }.map { |artist, photos| artist.name }
   end
-end
 
+  def photographs_from_country(country)
+    artists_with_photographs.select { |artist, photos| artist.country == country }.values.flatten
+  end
+end
 
 
 
