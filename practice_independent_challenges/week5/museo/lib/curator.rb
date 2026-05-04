@@ -29,9 +29,12 @@ class Curator
   end
 
   def photographs_from_country(country)
+    if country.class != String
+      raise ArgumentError, "photographs_from_country requires a String as an argument. argument type given: #{country.class}"
+    end
+
     artists_with_photographs.select { |artist, photos| artist.country == country }.values.flatten
   end
 end
-
 
 

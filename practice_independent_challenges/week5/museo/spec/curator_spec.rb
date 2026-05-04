@@ -317,9 +317,16 @@ RSpec.describe 'Curator' do
         expect(result).to eq([photograph_2, photograph_4, photograph_5])
         expect(curator.photographs_from_country("Spain")).to eq([])
       end
+
+      describe 'argument validation' do
+        it 'throws an error if the argument is not a String' do
+          curator = Curator.new
+
+          expect { curator.photographs_from_country(5) }.to raise_error(ArgumentError, "photographs_from_country requires a String as an argument. argument type given: Integer")
+        end
+      end
     end
 
     
   end
 end
-
