@@ -39,6 +39,23 @@ RSpec.describe 'Curator' do
       end
     end
 
+    describe '#add_photographs_from_csv' do
+      it 'can add photographs from a csv file' do
+        curator = Curator.new
+        file_path = '../data/photographs.csv'
+
+        curator.add_photographs_from_csv(file_path)
+        curator_photographs = curator.photographs
+        expect(curator_photographs.length).to eq(4)
+        first_photograph = curator_photographs.first
+        expect(first_photograph).to be_a(Photograph)
+        expect(first_photograph.id).to eq("1")
+        expect(first_photograph.name).to eq("Rue Mouffetard, Paris (Boy with Bottles)")
+        expect(first_photograph.artist_id).to eq("1")
+        expect(first_photograph.year).to eq("1954")
+      end
+    end
+
     describe '#add_artist' do
       it 'can add artists' do
         artist_1 = Artist.new({

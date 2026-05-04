@@ -1,3 +1,6 @@
+require 'csv'
+require_relative 'photograph'
+
 class Curator
   attr_reader :photographs, :artists
 
@@ -8,6 +11,19 @@ class Curator
 
   def add_photograph(photograph)
     @photographs << photograph
+  end
+
+  def add_photographs_from_csv(file_path)
+    File.open(file_path) do |file|
+      CSV.new(file, headers: true).each do |row|
+        add_photograph(Photograph.new({
+          id: row["id"],
+          name: row["name"],
+          artist_id: row["artist_id"],
+          year: row["year"]
+        }))
+      end
+    end
   end
 
   def add_artist(artist)
@@ -36,5 +52,4 @@ class Curator
     artists_with_photographs.select { |artist, photos| artist.country == country }.values.flatten
   end
 end
-
 
